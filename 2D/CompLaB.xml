@@ -1,0 +1,66 @@
+<?xml version="1.0" ?>
+<parameters>
+    <path>
+        <input_path> input </input_path>
+        <output_path> output </output_path>
+    </path>
+    <LB_numerics>
+        <delta_P> 0.002 </delta_P>
+        <Peclet> 3.3 </Peclet>
+        <tau> 0.8 </tau>
+        <domain>
+            <filename> FibHvarone2D.dat </filename>
+            <nx> 100 </nx>
+            <ny> 100 </ny>
+            <dx> 0.8 </dx>
+            <characteristic_length> 64 </characteristic_length>
+            <unit> um </unit>
+            <material_numbers>
+                <pore> 0 </pore>
+                <solid> 2 </solid>
+                <bounce_back> 1 </bounce_back>
+            </material_numbers>
+        </domain>
+        <track_performance> no </track_performance>
+        <iteration>
+            <ns_rerun_iT0> 0 </ns_rerun_iT0>
+            <ns_max_iT1> 633597 </ns_max_iT1>
+            <ns_converge_iT1> 1e-7 </ns_converge_iT1>
+            <ns_update_interval> 10 </ns_update_interval>
+            <ns_max_iT2> 100000 </ns_max_iT2>
+            <ns_converge_iT2> 1e-4 </ns_converge_iT2>
+            <ade_rerun_iT0> 0 </ade_rerun_iT0>
+            <ade_max_iT> 10000000 </ade_max_iT>
+            <ade_converge_iT> 1e-8 </ade_converge_iT>
+            <ade_update_interval> 1 </ade_update_interval>
+        </iteration>
+    </LB_numerics>
+
+    <chemistry>
+      <number_of_substrates> 1 </number_of_substrates>
+
+      <substrate0>
+          <name_of_substrates> chemical </name_of_substrates>
+          <substrate_diffusion_coefficients>
+              <in_pore> 1e-13 </in_pore>
+          </substrate_diffusion_coefficients>
+          <initial_concentration> 0 </initial_concentration>
+          <left_boundary_type> dirichlet </left_boundary_type>
+          <left_boundary_condition> 1 </left_boundary_condition>
+          <right_boundary_type> neumann </right_boundary_type>
+          <right_boundary_condition> 0 </right_boundary_condition>
+          <reaction_type> kinetics </reaction_type>
+          <solver_type> LBM </solver_type>
+      </substrate0>
+  </chemistry>
+
+    <IO>
+        <read_NS_file> no </read_NS_file>
+        <read_ADE_file> no </read_ADE_file>
+        <ns_filename> nsLattice </ns_filename>
+        <mask_filename> maskLattice </mask_filename>
+        <subs_filename> subsLattice </subs_filename>
+        <save_VTK_interval> 3500 </save_VTK_interval>
+        <save_CHK_interval> 1000000 </save_CHK_interval>
+    </IO>
+</parameters>
